@@ -59,7 +59,7 @@
             <div class="row">
                 <div class="col-lg-6 px-xl-13_5 text-white content">
                     <h3 class="title">Haberler</h3>
-                    <p class="mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p class="mt-2">{{news}}</p>
                     <a href="haberler.html" class="btn btn-outline-light mt-2">Tümünü Görüntüle</a>
                 </div>
                 <div class="col-lg-6 mt-lg-0 mt-12">
@@ -102,6 +102,13 @@
                     }
                 });
             });
+
+            spica.get.news((data) => {
+                let smallNews = data[(data.length - 1)].content.split(".");
+                $scope.news = smallNews[0] + "." + smallNews[1] + ".";
+                $scope.$apply();                
+                console.log($scope.news);
+            })
         }]);
     </script>
 </body>

@@ -29,73 +29,17 @@
                         <a href="calistigimiz-firmalar.html" class="active">Çalıştığımız Firmalar</a>
                     </div>
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-6 mt-lg-7 mt-5" ng-repeat="partner in partners">
                             <div class="news-item position-relative border-bottom d-flex w-100">
                                 <div class="company-img d-flex justify-content-center align-items-start mr-2 pb-3">
-                                    <img src="assets/img/companies/company-1.svg" alt="" class="img-fluid">
+                                    <img src="{{partner.image}}" alt="" class="img-fluid">
                                 </div>
                                 <div class="news-content d-flex flex-column justify-content-between pb-2">
                                     <div class="news-detail">
-                                        <h5>Lorem Ipsum</h5>
-                                        <p>Dolor sit amet, consectetur adipiscing</p>
+                                        <h5>{{partner.name}}</h5>
+                                        <p>{{partner.description}}</p>
                                     </div>
-                                    <a href="calistigimiz-firmalar-detay.html" class="btn btn-outline-dark ml-auto">Daha Fazla Bilgi</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 mt-lg-0 mt-5">
-                            <div class="news-item position-relative border-bottom d-flex w-100">
-                                <div class="company-img d-flex justify-content-center align-items-start mr-2 pb-3">
-                                    <img src="assets/img/companies/company-2.svg" alt="" class="img-fluid">
-                                </div>
-                                <div class="news-content d-flex flex-column justify-content-between pb-2">
-                                    <div class="news-detail">
-                                        <h5>Lorem Ipsum</h5>
-                                        <p>Dolor sit amet, consectetur adipiscing</p>
-                                    </div>
-                                    <a href="calistigimiz-firmalar-detay.html" class="btn btn-outline-dark ml-auto">Daha Fazla Bilgi</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 mt-lg-7 mt-5">
-                            <div class="news-item position-relative border-bottom d-flex w-100">
-                                <div class="company-img d-flex justify-content-center align-items-start mr-2 pb-3">
-                                    <img src="assets/img/companies/company-3.svg" alt="" class="img-fluid">
-                                </div>
-                                <div class="news-content d-flex flex-column justify-content-between pb-2">
-                                    <div class="news-detail">
-                                        <h5>Lorem Ipsum</h5>
-                                        <p>Dolor sit amet, consectetur adipiscing</p>
-                                    </div>
-                                    <a href="calistigimiz-firmalar-detay.html" class="btn btn-outline-dark ml-auto">Daha Fazla Bilgi</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 mt-lg-7 mt-5">
-                            <div class="news-item position-relative border-bottom d-flex w-100">
-                                <div class="company-img d-flex justify-content-center align-items-start mr-2 pb-3">
-                                    <img src="assets/img/companies/company-4.svg" alt="" class="img-fluid">
-                                </div>
-                                <div class="news-content d-flex flex-column justify-content-between pb-2">
-                                    <div class="news-detail">
-                                        <h5>Lorem Ipsum</h5>
-                                        <p>Dolor sit amet, consectetur adipiscing</p>
-                                    </div>
-                                    <a href="calistigimiz-firmalar-detay.html" class="btn btn-outline-dark ml-auto">Daha Fazla Bilgi</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 mt-lg-7 mt-5">
-                            <div class="news-item position-relative border-bottom d-flex w-100">
-                                <div class="company-img d-flex justify-content-center align-items-start mr-2 pb-3">
-                                    <img src="assets/img/companies/company-5.svg" alt="" class="img-fluid">
-                                </div>
-                                <div class="news-content d-flex flex-column justify-content-between pb-2">
-                                    <div class="news-detail">
-                                        <h5>Lorem Ipsum</h5>
-                                        <p>Dolor sit amet, consectetur adipiscing</p>
-                                    </div>
-                                    <a href="calistigimiz-firmalar-detay.html" class="btn btn-outline-dark ml-auto">Daha Fazla Bilgi</a>
+                                    <a href="calistigimiz-firmalar-detay.html?partner={{partner._id}}" class="btn btn-outline-dark ml-auto">Daha Fazla Bilgi</a>
                                 </div>
                             </div>
                         </div>
@@ -114,6 +58,10 @@
 
         angular.module('hfs', [])
         .controller('controller', ['$scope', function ($scope) {
+            spica.get.partners((data) => {
+                $scope.partners = data;
+                $scope.$apply();
+            });
         }]);
     </script>
 </body>

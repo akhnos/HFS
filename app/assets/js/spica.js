@@ -51,11 +51,17 @@ function Spica() {
       news: (callback) => {
         getData('5f045c605eaba7b3e37bf113/data/', callback);
       },
-      newsDetails: (callback) => {
+      newsDetails: (newsID,callback) => {
         getData('5f045c605eaba7b3e37bf113/data/' + newsID, callback);
       },
       contactInformations: () => {},
       aboutUs: () => {},
+      partners: (callback) => {
+        getData('5f045dbf5eaba721327bf11b/data/', callback);
+      },
+      partnerDetails: (partnerID,callback) => {
+        getData('5f045dbf5eaba721327bf11b/data/' + partnerID, callback);
+      }
     },
   };
 }
