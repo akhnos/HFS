@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
+    <title>HFS SADIKOĞLU</title>
+    <link rel="stylesheet" href="assets/css/core.css">
+</head>
+<body ng-app="hfs" ng-controller="controller" class="homepage">
+    <header ng-include="'assets/includes/header.htm'" class="py-lg-3 py-1"></header>
+    <div class="homebanner swiper-container">
+        <div class="swiper-wrapper">
+            <div ng-repeat="slide in slides" class="swiper-slide pt-lg-18">
+                <div class="container h-100 d-flex">
+                    <div class="content d-flex flex-column align-items-start justify-content-end">
+                        <h2 class="title pb-1"><b>{{slide.title}}</b> Apartmanı</h2>
+                        <a href="proje-detay.html?project={{slide._id}}" class="link mt-3">Proje Detayı</a>
+                    </div>
+                    <div class="project-mid-img d-lg-block d-none" style="background-image: url('assets/img/banner/akal-apart-mid.jpg');"></div>
+                </div>
+                <div class="bg" style="background-image: url('assets/img/banner/akal-apart-big.jpg');"></div>
+            </div>
+        </div>
+        <div class="pagination"></div>
+    </div>
+    <div class="project-status pt-lg-3 pt-9 pb-11 pb-lg-13">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 px-xl-13_5">
+                    <h3 class="title">Projem <b>ne durumda</b>?</h3>
+                    <p class="mt-2">Kullanıcı bilgileriniz ile giriş yapın, dairenizin durumunu güncel video ve fotoğraflar ile görüntüleyin.</p>
+                    <a href="projem-ne-durumda.html" class="btn btn-outline-dark mt-2">Giriş Yap</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="home-projects">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 d-lg-block d-none">
+                    <div class="bg"></div>
+                </div>
+                <div class="col-lg-6 d-flex justify-content-lg-start justify-content-center pt-lg-13 pb-lg-0 pt-10 pb-9">
+                    <div class="d-flex flex-column align-items-lg-end pl-lg-11">
+                        <h2>Projelerimiz</h2>
+                        <a href="projelerimiz.html" class="btn btn-outline-light mt-2">Tümünü Görüntüle</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="home-media pt-lg-13_5 pt-13 pb-lg-13 pb-8 mt-lg-13">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 px-xl-13_5 text-white content">
+                    <h3 class="title">Haberler</h3>
+                    <p class="mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <a href="haberler.html" class="btn btn-outline-light mt-2">Tümünü Görüntüle</a>
+                </div>
+                <div class="col-lg-6 mt-lg-0 mt-12">
+                    <div class="pl-lg-12">
+                        <h3>Teklif <b>talep edin</b></h3>
+                        <p class="mt-2">Yardıma mı ihtiyacınız var? Bize iletişim bilgilerinizi bırakın, size geri dönelim.</p>
+                        <div ng-include="'assets/includes/form.htm'" class="mt-4"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer ng-include="'assets/includes/footer.htm'" class="bg-dark text-white py-lg-6 py-4"></footer>
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script type="text/javascript" src="assets/cdn/js/swiper.min.js"></script>
+    <script type="text/javascript" src="assets/js/min/core.min.js"></script>
+    <script type="text/javascript" src="assets/js/spica.js"></script>
+    <script>
+
+        angular.module('hfs', [])
+        .controller('controller', ['$scope', function ($scope) {
+            spica.get.sliders((data) => {
+                $scope.slides = data;
+                $scope.$apply();                
+                /*homebanner*/
+                var homeBanner = new Swiper('.homebanner', {
+                    speed:600,
+                    loop:true,
+                    autoplay: {
+                        delay: 5000,
+                    },
+                    pagination: {
+                        el: '.pagination',
+                        clickable: true,
+                        renderBullet: function (index, className) {
+                            return `<span class="dot swiper-pagination-bullet">${index+1}</span>`;
+                        }
+                    }
+                });
+            });
+        }]);
+    </script>
+</body>
+</html>
