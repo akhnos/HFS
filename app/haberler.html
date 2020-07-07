@@ -29,63 +29,15 @@
                         <a href="haberler.html" class="active">Haberler</a>
                     </div>
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-6 mt-lg-7 mt-5" ng-repeat="news in allNews">
                             <div class="news-item position-relative border-bottom d-flex w-100">
-                                <div class="news-img mr-2" style="background-image: url('assets/img/news/ek-bakani-acikladi-big.jpg')";></div>
+                                <div class="news-img mr-2" style="background-image: url('{{news.image}}')";></div>
                                 <div class="news-content d-flex flex-column justify-content-between pb-2">
                                     <div class="news-detail">
-                                        <h5>Ekonomi Bakanı Açıkladı</h5>
-                                        <p>Ev alan vatandaşa devlet desteği geliyor</p>
+                                        <h5>{{news.short_title}}</h5>
+                                        <p>{{news.short_description}}</p>
                                     </div>
-                                    <a href="haber-detay.html" class="btn btn-outline-dark ml-auto">Haber Detayı</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 mt-lg-0 mt-5">
-                            <div class="news-item position-relative border-bottom d-flex w-100">
-                                <div class="news-img mr-2" style="background-image: url('assets/img/news/kredi-skoru-hesaplamasi-big.jpg')";></div>
-                                <div class="news-content d-flex flex-column justify-content-between pb-2">
-                                    <div class="news-detail">
-                                        <h5>Kredi Skoru Hesaplaması</h5>
-                                        <p>Önemli bir finansal karar olan kredi kullanımında böyle bir yer tutan kredi skoru neye göre hesaplanıyor</p>
-                                    </div>
-                                    <a href="haber-detay.html" class="btn btn-outline-dark ml-auto">Haber Detayı</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 mt-lg-7 mt-5">
-                            <div class="news-item position-relative border-bottom d-flex w-100">
-                                <div class="news-img mr-2" style="background-image: url('assets/img/news/gayrimenkulde-donum-big.jpg')";></div>
-                                <div class="news-content d-flex flex-column justify-content-between pb-2">
-                                    <div class="news-detail">
-                                        <h5>2021, gayrimenkulde dönüm noktası olacak</h5>
-                                        <p>İNDER Yönetim Kurulu Başkanı Nazmi Durbakayım</p>
-                                    </div>
-                                    <a href="haber-detay.html" class="btn btn-outline-dark ml-auto">Haber Detayı</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 mt-lg-7 mt-5">
-                            <div class="news-item position-relative border-bottom d-flex w-100">
-                                <div class="news-img mr-2" style="background-image: url('assets/img/news/tapuda-kolaylik-big.jpg')";></div>
-                                <div class="news-content d-flex flex-column justify-content-between pb-2">
-                                    <div class="news-detail">
-                                        <h5>Yeni Yılda Tapuda Kolaylık</h5>
-                                        <p>Tapu ve Kadastro Genel Müdürlüğü (TKGM) tapu hizmetlerini elektronik ortamda sunmaya devam ediyor</p>
-                                    </div>
-                                    <a href="haber-detay.html" class="btn btn-outline-dark ml-auto">Haber Detayı</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 mt-lg-7 mt-5">
-                            <div class="news-item position-relative border-bottom d-flex w-100">
-                                <div class="news-img mr-2" style="background-image: url('assets/img/news/suudi-kralina-sok-big.jpg')";></div>
-                                <div class="news-content d-flex flex-column justify-content-between pb-2">
-                                    <div class="news-detail">
-                                        <h5>Suudi Kralı’na Şok</h5>
-                                        <p>Şehir Plancıları Odası İstanbul Şubesi Suudi Arabistan Kralı Abdullah sahibi olduğu Sevda Tepesi ile Şişli Meslek Lisesi…</p>
-                                    </div>
-                                    <a href="haber-detay.html" class="btn btn-outline-dark ml-auto">Haber Detayı</a>
+                                    <a href="haber-detay.html?news={{news._id}}" class="btn btn-outline-dark ml-auto">Haber Detayı</a>
                                 </div>
                             </div>
                         </div>
@@ -104,6 +56,11 @@
 
         angular.module('hfs', [])
         .controller('controller', ['$scope', function ($scope) {
+            spica.get.news((data) => {
+                console.log(data);
+                $scope.allNews = data;
+                $scope.$apply();
+            })
         }]);
     </script>
 </body>

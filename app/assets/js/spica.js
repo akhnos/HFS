@@ -1,8 +1,8 @@
 function Spica() {
 
-    var apiURL = "https://master.spicaengine.com/api/";
+    var apiURL = "https://testing-3e558.hq.spicaengine.com/api";
     var bucketApi = "/bucket/";
-    var apiKey = "1sb1kc4h54ry";
+    var apiKey = "6y37r71kcbuptti";
 
     function getData(url, successCallback) {
         $.ajax({
@@ -25,8 +25,8 @@ function Spica() {
             "projects": () => {},
             "projectDetails": (projectID, callback) => { getData("5efa017c8f036fcb0731f0f7/data/" + projectID, callback) },
             "myProjectsDetails": (projectID, callback) => { getData("5efa017c8f036fcb0731f0f7/data/" + projectID, callback) },
-            "news": () => {},
-            "newsDetails": () => {},
+            "news": (callback) => {getData("5f045c605eaba7b3e37bf113/data", callback) },
+            "newsDetails": (newsID, callback) => { getData("5f045c605eaba7b3e37bf113/data/" + newsID, callback) },
             "contactInformations": () => {},
             "aboutUs": () => {}
         },
