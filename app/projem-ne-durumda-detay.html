@@ -251,6 +251,10 @@
                   },
                 });
               });
+              spica.get.socialNetworks((data) => {
+                $scope.socialNetworks = data;
+                $scope.$apply();
+              });
             }
           },
         ]);

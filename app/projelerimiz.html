@@ -117,7 +117,12 @@
     <script>
       angular
         .module('hfs', [])
-        .controller('controller', ['$scope', function ($scope) {}]);
+        .controller('controller', ['$scope', function ($scope) {
+            spica.get.socialNetworks((data) => {
+                $scope.socialNetworks = data;
+                $scope.$apply();
+            });
+          }]);
     </script>
   </body>
 </html>

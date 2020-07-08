@@ -68,7 +68,12 @@
                 spica.get.newsDetails(newsID,(data) => {
                     $scope.news = data;
                     $scope.$apply();     
-                })  
+                });
+
+                spica.get.socialNetworks((data) => {
+                    $scope.socialNetworks = data;
+                    $scope.$apply();
+                });
             }
         }]);
     </script>

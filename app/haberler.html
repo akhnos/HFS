@@ -60,7 +60,12 @@
                 $scope.allNews = data;
                 $scope.$apply();
                 $("#content").show();
-            })
+            });
+
+            spica.get.socialNetworks((data) => {
+                $scope.socialNetworks = data;
+                $scope.$apply();
+            });
         }]);
     </script>
 </body>
