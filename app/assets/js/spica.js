@@ -19,7 +19,10 @@ function Spica() {
   return {
     get: {
       sliders: (callback) => {
-        getData('5efa017c8f036fcb0731f0f7/data', callback);
+        getData(
+          '5f045bc95eaba7c6887bf111/data?filter={"on_slider":true}',
+          callback
+        );
       },
       companies: (callback) => {
         getData('5f045dbf5eaba721327bf11b/data');
@@ -51,7 +54,7 @@ function Spica() {
       news: (callback) => {
         getData('5f045c605eaba7b3e37bf113/data/', callback);
       },
-      newsDetails: (newsID,callback) => {
+      newsDetails: (newsID, callback) => {
         getData('5f045c605eaba7b3e37bf113/data/' + newsID, callback);
       },
       contactInformations: () => {},
@@ -59,9 +62,9 @@ function Spica() {
       partners: (callback) => {
         getData('5f045dbf5eaba721327bf11b/data/', callback);
       },
-      partnerDetails: (partnerID,callback) => {
+      partnerDetails: (partnerID, callback) => {
         getData('5f045dbf5eaba721327bf11b/data/' + partnerID, callback);
-      }
+      },
     },
   };
 }

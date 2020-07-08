@@ -104,15 +104,10 @@
       angular.module('hfs', []).controller('controller', [
         '$scope',
         function ($scope) {
-          angular.module('hfs', []).controller('controller', [
-            '$scope',
-            function ($scope) {
-              spica.get.completedProjects((data) => {
-                $scope.projects = data;
-                $scope.$apply();
-              });
-            },
-          ]);
+          spica.get.completedProjects((data) => {
+            $scope.projects = data;
+            $scope.$apply();
+          });
         },
       ]);
     </script>

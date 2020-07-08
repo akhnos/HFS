@@ -61,14 +61,17 @@
                       <b>{{apartment.no}}</b> : {{apartment.info}} <br />
                     </span>
                   </p>
-                  <a href="iletisim.html" class="btn btn-outline-light mt-2"
+                  <a
+                    href="iletisim.html"
+                    target="_parent"
+                    class="btn btn-outline-light mt-2"
                     >İletişime Geçin</a
                   >
                 </div>
                 <div
                   class="news-detail-big-img d-xl-block d-none"
                   style="
-                    background-image: url('assets/img/project-detail/apart-big-banner.jpg');
+                    background-image: url({{project.main_image}});
                   "
                   ;
                 ></div>
@@ -99,7 +102,10 @@
                   <b>{{apartment.no}}</b> : {{apartment.info}} <br />
                 </span>
               </p>
-              <a href="iletisim.html" class="btn btn-outline-dark mt-2"
+              <a
+                href="iletisim.html"
+                target="_parent"
+                class="btn btn-outline-dark mt-2"
                 >İletişime Geçin</a
               >
             </div>
@@ -151,7 +157,7 @@
                     class="col-md-4 col-6 mt-sm-5 mt-1 pl-sm-2 pl-0_5"
                   >
                     <a class="gallery-item" href="{{galleryItem}}">
-                      <img ng-src="{{galleryItem}" alt="" class="img-fluid" />
+                      <img src="{{galleryItem}}" alt="" class="img-fluid" />
                     </a>
                   </div>
                 </div>
