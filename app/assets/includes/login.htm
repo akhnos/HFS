@@ -1,47 +1,76 @@
 <form id="form" action="" autocomplete="off">
-    <div class="input-group">
-        <input type="text" name="name" id="name" class="form-control" placeholder="Kullanıcı Adı">
-        <input type="password" name="password" id="password" class="form-control ml-2" placeholder="Şifre">
-    </div>
-    <button class="btn btn-primary mt-2 px-5 py-1 w-100">GİRİŞ YAP</button>
+  <div class="input-group">
+    <input
+      type="text"
+      name="username"
+      id="name"
+      class="form-control"
+      placeholder="Kullanıcı Adı"
+    />
+    <input
+      type="password"
+      name="password"
+      id="password"
+      class="form-control ml-2"
+      placeholder="Şifre"
+    />
+  </div>
+  <button class="btn btn-primary mt-2 px-5 py-1 w-100">GİRİŞ YAP</button>
+  <div id="message" class="message"></div>
 </form>
 <script>
-    /*form validation*/
-    function validationName(){
-        const name = document.getElementById("name");
-        if( name.value.length < 2 ){
-            name.classList.add("border-danger");
-            return false;
-        }else{
-            name.classList.remove("border-danger");
-            return true;
-        }
-        return true;
+  /*form validation*/
+  function validationName() {
+    const name = document.getElementById('name');
+    if (name.value.length < 2) {
+      name.classList.add('border-danger');
+      return false;
+    } else {
+      name.classList.remove('border-danger');
+      return true;
     }
-    function validationPassword(){
-        const password = document.getElementById("password");
-        if( password.value.length <  5 ){
-            password.classList.add("border-danger");
-            return false;
-        }else {
-            password.classList.remove("border-danger");
-            return true;
-        }
-        return true;
+    return true;
+  }
+  function validationPassword() {
+    const password = document.getElementById('password');
+    if (password.value.length < 5) {
+      password.classList.add('border-danger');
+      return false;
+    } else {
+      password.classList.remove('border-danger');
+      return true;
     }
-    document.getElementById("form").addEventListener('submit', function(e) {
-        const form = document.getElementById("form");
-        const message = document.querySelector(".message");
-        if (!validationName() ||  !validationPassword() ){
-            if ( message == null ){
-                const createMessage = document.createElement("div");
-                createMessage.className = "message text-danger mt-2";
-                createMessage.innerHTML = "*Bu alanların girmesi zorunludur."; 
-                form.appendChild(createMessage);
-            }
-        }else{
-            window.location.href= "/projem-ne-durumda-detay.html";
-        }
-        e.preventDefault();
-    });
+    return true;
+  }
+  document.getElementById('form').addEventListener('submit', function (e) {
+    const form = document.getElementById('form');
+    const message = document.getElementById('message');
+    if (!validationName() || !validationPassword()) {
+      message.className = 'message text-danger mt-2';
+      message.innerHTML = '*Bu alanların girmesi zorunludur.';
+    } else {
+      var formdata = new FormData(form);
+      $.ajax({
+        url: `https://testing-3e558.hq.spicaengine.com/api/bucket/5f058af55eaba76fbc7bf17c/data`,
+        type: 'GET',
+        data: {
+          filter: `{"username": "${formdata.get(
+            'username'
+          )}", "password": "${formdata.get('password')}"}`,
+        },
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader('Authorization', 'APIKEY 6y37r71kcbuptti');
+        },
+        success: function (data) {
+          if (data.length > 0) {
+            window.location.href = `/projem-ne-durumda-detay.html?project=${data[0].project}`;
+          } else {
+            message.className = 'message text-danger mt-2';
+            message.innerHTML = 'Kullanıcı adı veya şifre yanlış.';
+          }
+        },
+      });
+    }
+    e.preventDefault();
+  });
 </script>
