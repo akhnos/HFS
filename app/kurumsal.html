@@ -11,7 +11,7 @@
     <title>HFS SADIKOĞLU - Kurumsal</title>
     <link rel="stylesheet" href="assets/css/core.css">
 </head>
-<body ng-app="hfs" ng-controller="controller" class="subpage">
+<body ng-app="hfs" ng-controller="controller" class="subpage" id="content">
     <header ng-include="'assets/includes/header.htm'" class="py-lg-3 py-1"></header>
     <div class="subpage-wrap d-flex">
         <div class="container">
@@ -47,13 +47,15 @@
     <script type="text/javascript" src="assets/js/min/core.min.js"></script>
     <script type="text/javascript" src="assets/js/spica.js"></script>
     <script>
-
+        $("#content").hide();
         angular.module('hfs', ['ngSanitize'])
         .controller('controller', ['$scope', function ($scope) {
+            
             spica.get.aboutUs((data) => {
                 console.log(data);
                 $scope.aboutUs = data[0];
                 $scope.$apply();
+                $("#content").show();
             })
         }]);
     </script>

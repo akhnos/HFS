@@ -16,6 +16,14 @@ function Spica() {
     });
   }
 
+  function enableLoading(){
+    
+  }
+
+  function disableLoading(){
+
+  }
+
   return {
     get: {
       sliders: (callback) => {
