@@ -22,7 +22,7 @@
       sizes="16x16"
       href="assets/img/favicon-16x16.png"
     />
-    <title>HFS SADIKOĞLU - Projelerimiz</title>
+    <title>HFS SADIKOĞLU - Devam Eden Projeler</title>
     <link rel="stylesheet" href="assets/css/core.css" />
   </head>
   <body ng-app="hfs" ng-controller="controller" class="subpage">
@@ -38,58 +38,44 @@
               <div
                 class="offset-xl-7 col-xl-5 px-xl-7 px-0 py-xl-13_5 py-8 h-100"
               >
-                <h2 class="title op8 text-white text-xl-right">Projelerimiz</h2>
+                <h2 class="title op8 text-white text-xl-right">
+                  <b>Devam Eden</b> <br class="d-xl-block d-none" />Projeler
+                </h2>
               </div>
             </div>
           </div>
           <div class="offset-xl-5 col-xl-7 py-xl-13_5 py-lg-9 py-5 pl-xl-0">
             <div class="nav-breadcrumb d-lg-block d-none">
               <a href="index.html">Anasayfa</a>
-              <a href="projelerimiz.html" class="active">Projelerimiz</a>
+              <a href="projelerimiz.html">Projelerimiz</a>
+              <a href="devam-eden-projeler.html" class="active"
+                >Devam Eden Projeler</a
+              >
             </div>
             <div class="row">
-              <div class="col-md-6" ng-if="ongoing">
+              <div
+                class="col-md-6 mt-lg-7 mt-5"
+                ng-repeat="project in projects"
+              >
                 <div
                   class="project-item position-relative border-bottom d-flex w-100"
                 >
                   <div
                     class="project-img mr-2"
-                    style="
-                      background-image: url('assets/img/old-projects/old-projects.jpg');
-                    "
+                    style="background-image: url({{project.main_image}})"
                     ;
                   ></div>
                   <div
                     class="project-content d-flex flex-column justify-content-between pb-2"
                   >
-                    <h4><b>Devam Eden</b> <br />Projeler</h4>
+                    <div class="project-detail">
+                      <h5>{{project.name}}</h5>
+                      <p class="mt-1">{{project.location}}</p>
+                    </div>
                     <a
-                      href="devam-eden-projeler.html"
+                      href="proje-detay.html?project={{project._id}}"
                       class="btn btn-outline-dark ml-auto"
-                      >Tümünü Görüntüle</a
-                    >
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 mt-md-0 mt-5" ng-if="completed">
-                <div
-                  class="project-item position-relative border-bottom d-flex w-100"
-                >
-                  <div
-                    class="project-img mr-2"
-                    style="
-                      background-image: url('assets/img/completed-projects/completed-projects.jpg');
-                    "
-                    ;
-                  ></div>
-                  <div
-                    class="project-content d-flex flex-column justify-content-between pb-2"
-                  >
-                    <h4><b>Tamamlanan</b> <br />Projeler</h4>
-                    <a
-                      href="tamamlanan-projeler.html"
-                      class="btn btn-outline-dark ml-auto"
-                      >Tümünü Görüntüle</a
+                      >Projeyi Görüntüle</a
                     >
                   </div>
                 </div>
@@ -118,24 +104,8 @@
       angular.module('hfs', []).controller('controller', [
         '$scope',
         function ($scope) {
-          spica.get.socialNetworks((data) => {
-            $scope.socialNetworks = data;
-            $scope.$apply();
-          });
           spica.get.ongoingProjects((data) => {
-            if (data && data.length) {
-              $scope.ongoing = true;
-            } else {
-              $scope.ongoing = false;
-            }
-            $scope.$apply();
-          });
-          spica.get.completedProjects((data) => {
-            if (data && data.length) {
-              $scope.completed = true;
-            } else {
-              $scope.completed = false;
-            }
+            $scope.projects = data;
             $scope.$apply();
           });
         },

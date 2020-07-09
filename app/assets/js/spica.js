@@ -32,13 +32,19 @@ function Spica() {
       },
       completedProjects: (callback) => {
         getData(
-          `5f045bc95eaba7c6887bf111/data?filter={"is_completed":true}`,
+          `5f045bc95eaba7c6887bf111/data?filter={"status":"completed"}`,
           callback
         );
       },
       oldProjects: (callback) => {
         getData(
-          `5f045bc95eaba7c6887bf111/data?filter={"is_old":true}`,
+          `5f045bc95eaba7c6887bf111/data?filter={"status":"ongoing"}`,
+          callback
+        );
+      },
+      ongoingProjects: (callback) => {
+        getData(
+          `5f045bc95eaba7c6887bf111/data?filter={"status":"ongoing"}`,
           callback
         );
       },

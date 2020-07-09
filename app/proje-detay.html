@@ -24,6 +24,10 @@
     />
     <title>HFS SADIKOĞLU - {{project.title}} Apartmanı</title>
     <link href="assets/cdn/css/magnific-popup.css" rel="stylesheet" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.16/mediaelementplayer.min.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="assets/css/core.css" />
     <base href="/" />
   </head>
@@ -156,9 +160,24 @@
                     ng-repeat="galleryItem in project.gallery track by $index"
                     class="col-md-4 col-6 mt-sm-5 mt-1 pl-sm-2 pl-0_5"
                   >
-                    <a class="gallery-item" href="{{galleryItem}}">
-                      <img src="{{galleryItem}}" alt="" class="img-fluid" />
+                    <a
+                      class="gallery-item image"
+                      href="{{galleryItem.storage}}"
+                      ng-if="galleryItem.type === 'image'"
+                    >
+                      <img
+                        src="{{galleryItem.storage}}"
+                        alt=""
+                        class="img-fluid"
+                      />
                     </a>
+                    <video
+                      class="gallery-item video"
+                      ng-if="galleryItem.type === 'video'"
+                      controls
+                    >
+                      <source src="{{galleryItem.storage}}" type="video/mp4" />
+                    </video>
                   </div>
                 </div>
               </div>
@@ -181,6 +200,7 @@
       src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"
     ></script>
     <script src="assets/cdn/js/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.16/mediaelement.min.js"></script>
     <script type="text/javascript" src="assets/js/min/core.min.js"></script>
     <script type="text/javascript" src="assets/js/spica.js"></script>
     <script>
@@ -202,7 +222,7 @@
                 $scope.project = data;
                 $scope.$apply();
 
-                $('.gallery-item').magnificPopup({
+                $('.gallery-item.image').magnificPopup({
                   type: 'image',
                   mainClass: 'mfp-with-zoom', // this class is for CSS animation below
                   zoom: {
@@ -220,6 +240,11 @@
                     enabled: true,
                   },
                 });
+
+                // $('.gallery-item.video').magnificPopup({
+                //   type: 'inline',
+                //   mainClass: 'mfp-with-zoom', // this class is for CSS animation below
+                // });
               });
               spica.get.socialNetworks((data) => {
                   $scope.socialNetworks = data;
