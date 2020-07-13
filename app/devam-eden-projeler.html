@@ -108,6 +108,14 @@
             $scope.projects = data;
             $scope.$apply();
           });
+
+          spica.get.navigations((data) => {
+            $scope.navigations = data.reduce(
+              (obj, item) => Object.assign(obj, { [item.key]: item.enabled }),
+              {}
+            );
+            $scope.$apply();
+          });
         },
       ]);
     </script>

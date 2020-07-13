@@ -22,7 +22,7 @@
       sizes="16x16"
       href="assets/img/favicon-16x16.png"
     />
-    <title>HFS SADIKOĞLU - Deniz Apartmanı</title>
+    <title>HFS SADIKOĞLU - {{project.title}}</title>
     <link href="assets/cdn/css/magnific-popup.css" rel="stylesheet" />
     <link rel="stylesheet" href="assets/css/core.css" />
     <base href="/" />
@@ -41,26 +41,40 @@
                 class="offset-xl-7 col-xl-5 px-xl-7 px-0 py-xl-13_5 py-8 h-100"
               >
                 <h2 class="title op8 text-white text-xl-right">
-                  {{project.name}} Apartmanı
+                  {{project.name}}
                 </h2>
                 <div
                   class="leftBarContent text-xl-right text-white d-xl-block d-none mt-6"
                 >
                   <p>
-                    <b>Proje ismi</b> : {{project.name}} Apartmanı<br />
-                    <b>Proje yeri</b> : {{project.location}} <br />
-                    <b>İnşaat alanı</b> : {{project.construction_space}} m2
-                    <br />
-                    <b>Başlama - Bitiş tarihi</b> : {{project.start_end_date}}
-                  </p>
-                  <p class="mt-2">
-                    <u><b>SATILIK DAİRELER:</b></u>
-                  </p>
-                  <p>
-                    <span ng-repeat="apartment in project.apartments_for_sale">
-                      <b>{{apartment.no}}</b> : {{apartment.info}} <br />
+                    <span ng-if="project.name">
+                      <b>Proje ismi</b> : {{project.name}}
+                      <br />
+                    </span>
+                    <span ng-if="project.location">
+                      <b>Proje yeri</b> : {{project.location}} <br />
+                    </span>
+                    <span ng-if="project.construction_space">
+                      <b>İnşaat alanı</b> : {{project.construction_space}} m2
+                      <br />
+                    </span>
+                    <span ng-if="project.start_end_date">
+                      <b>Başlama - Bitiş tarihi</b>
+                      : {{project.start_end_date}}
                     </span>
                   </p>
+                  <span ng-if="project.apartments_for_sale.length">
+                    <p class="mt-2">
+                      <u><b>SATILIK DAİRELER:</b></u>
+                    </p>
+                    <p>
+                      <span
+                        ng-repeat="apartment in project.apartments_for_sale"
+                      >
+                        <b>{{apartment.no}}</b> : {{apartment.info}} <br />
+                      </span>
+                    </p>
+                  </span>
                   <a
                     href="/iletisim.html"
                     target="_parent"
@@ -82,26 +96,36 @@
             <div class="nav-breadcrumb d-lg-block d-none">
               <a href="index.html">Anasayfa</a>
               <a href="tamamlanan-projeler.html">Tamamlanan Projeler</a>
-              <a href="proje-detay.html" class="active"
-                >{{project.title}} Apartmanı</a
-              >
+              <a href="proje-detay.html" class="active">{{project.title}}</a>
             </div>
             <div class="leftBarContent d-xl-none">
               <p>
-                <b>Proje ismi</b> : {{project.name}} Apartmanı <br />
-                <b>Proje yeri</b> : {{project.location}} <br />
-                <b>İnşaat alanı</b> : {{project.construction_space}} m2
-                <br />
-                <b>Başlama - Bitiş tarihi</b> : {{project.start_end_date}}
-              </p>
-              <p class="mt-2">
-                <u><b>SATILIK DAİRELER:</b></u>
-              </p>
-              <p>
-                <span ng-repeat="apartment in project.apartments_for_sale">
-                  <b>{{apartment.no}}</b> : {{apartment.info}} <br />
+                <span ng-if="project.name">
+                  <b>Proje ismi</b> : {{project.name}}
+                  <br />
+                </span>
+                <span ng-if="project.location">
+                  <b>Proje yeri</b> : {{project.location}} <br />
+                </span>
+                <span ng-if="project.construction_space">
+                  <b>İnşaat alanı</b> : {{project.construction_space}} m2
+                  <br />
+                </span>
+                <span ng-if="project.start_end_date">
+                  <b>Başlama - Bitiş tarihi</b>
+                  : {{project.start_end_date}}
                 </span>
               </p>
+              <span ng-if="project.apartments_for_sale.length">
+                <p class="mt-2">
+                  <u><b>SATILIK DAİRELER:</b></u>
+                </p>
+                <p>
+                  <span ng-repeat="apartment in project.apartments_for_sale">
+                    <b>{{apartment.no}}</b> : {{apartment.info}} <br />
+                  </span>
+                </p>
+              </span>
               <a
                 href="iletisim.html"
                 target="_parent"
@@ -113,42 +137,54 @@
               class="row mt-xl-0 mt-lg-9 mt-md-5 flex-md-row flex-column-reverse"
             >
               <div class="col-md-4 mt-md-0 mt-5">
-                <h5 class="mb-2">Genel Özellikler</h5>
-                <p
-                  ng-repeat="item in project.general_spesifications track by $index"
-                >
-                  {{item}}
-                </p>
+                <span ng-if="project.general_spesifications.length">
+                  <h5 class="mb-2">Genel Özellikler</h5>
+                  <p
+                    ng-repeat="item in project.general_spesifications track by $index"
+                  >
+                    {{item}}
+                  </p>
+                </span>
               </div>
               <div class="col-md-4 d-md-block d-none">
-                <h5 class="mb-2">Salon ve Odalar</h5>
-                <p
-                  ng-repeat="item in project.mainhall_and_rooms track by $index"
-                >
-                  {{item}}
-                </p>
-                <h5 class="mt-5 mb-2">Mutfak</h5>
-                <p ng-repeat="item in project.kitchen track by $index">
-                  {{item}}
-                </p>
-                <h5 class="mt-5 mb-2">Banyo</h5>
-                <p ng-repeat="item in project.bathroom track by $index">
-                  {{item}}
-                </p>
+                <span ng-if="project.mainhall_and_rooms.length">
+                  <h5 class="mb-2">Salon ve Odalar</h5>
+                  <p
+                    ng-repeat="item in project.mainhall_and_rooms track by $index"
+                  >
+                    {{item}}
+                  </p>
+                </span>
+                <span ng-if="project.kitchen.length">
+                  <h5 class="mt-5 mb-2">Mutfak</h5>
+                  <p ng-repeat="item in project.kitchen track by $index">
+                    {{item}}
+                  </p>
+                </span>
+                <span ng-if="project.bathroom.length">
+                  <h5 class="mt-5 mb-2">Banyo</h5>
+                  <p ng-repeat="item in project.bathroom track by $index">
+                    {{item}}
+                  </p>
+                </span>
               </div>
               <div class="col-md-4 d-md-block d-none">
-                <h5 class="mb-2">Antre ve Koridorlar</h5>
-                <p
-                  ng-repeat="item in project.entrance_and_corridors track by $index"
-                >
-                  {{item}}
-                </p>
-                <h5 class="mt-5 mb-2">Bina Özellikleri</h5>
-                <p
-                  ng-repeat="item in project.building_spesifications track by $index"
-                >
-                  {{item}}
-                </p>
+                <span ng-if="project.entrance_and_corridors.length">
+                  <h5 class="mb-2">Antre ve Koridorlar</h5>
+                  <p
+                    ng-repeat="item in project.entrance_and_corridors track by $index"
+                  >
+                    {{item}}
+                  </p>
+                </span>
+                <span ng-if="project.building_spesifications.length">
+                  <h5 class="mt-5 mb-2">Bina Özellikleri</h5>
+                  <p
+                    ng-repeat="item in project.building_spesifications track by $index"
+                  >
+                    {{item}}
+                  </p>
+                </span>
               </div>
               <div class="col-12 mt-lg-9 mt-5">
                 <div class="row">
@@ -156,9 +192,24 @@
                     ng-repeat="galleryItem in project.gallery track by $index"
                     class="col-md-4 col-6 mt-sm-5 mt-1 pl-sm-2 pl-0_5"
                   >
-                    <a class="gallery-item" href="{{galleryItem}}">
-                      <img src="{{galleryItem}}" alt="" class="img-fluid" />
+                    <a
+                      class="gallery-item image"
+                      href="{{galleryItem.storage}}"
+                      ng-if="galleryItem.type === 'image'"
+                    >
+                      <img
+                        src="{{galleryItem.storage}}"
+                        alt=""
+                        class="img-fluid"
+                      />
                     </a>
+                    <video
+                      class="gallery-item video"
+                      ng-if="galleryItem.type === 'video'"
+                      controls
+                    >
+                      <source src="{{galleryItem.storage}}" type="video/mp4" />
+                    </video>
                   </div>
                 </div>
               </div>
@@ -253,6 +304,15 @@
               });
               spica.get.socialNetworks((data) => {
                 $scope.socialNetworks = data;
+                $scope.$apply();
+              });
+
+              spica.get.navigations((data) => {
+                $scope.navigations = data.reduce(
+                  (obj, item) =>
+                    Object.assign(obj, { [item.key]: item.enabled }),
+                  {}
+                );
                 $scope.$apply();
               });
             }

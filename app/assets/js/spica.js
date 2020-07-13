@@ -61,7 +61,10 @@ function Spica() {
         getData('5f045c605eaba7b3e37bf113/data/', callback);
       },
       newsFeatured: (callback) => {
-        getData('5f045c605eaba7b3e37bf113/data?filter={"on_homepage":true}&limit=1', callback);
+        getData(
+          '5f045c605eaba7b3e37bf113/data?filter={"on_homepage":true}&limit=1',
+          callback
+        );
       },
       newsDetails: (newsID, callback) => {
         getData('5f045c605eaba7b3e37bf113/data/' + newsID, callback);
@@ -78,7 +81,10 @@ function Spica() {
       },
       socialNetworks: (callback) => {
         getData('5f05d4e05eaba77d987bf1a8/data/', callback);
-      }
+      },
+      navigations: (callback) => {
+        getData('5f0c264f5eaba7abbd7bf384/data/', callback);
+      },
     },
   };
 }

@@ -132,9 +132,18 @@
     <script type="text/javascript" src="assets/js/min/core.min.js"></script>
     <script type="text/javascript" src="assets/js/spica.js"></script>
     <script>
-      angular
-        .module('hfs', [])
-        .controller('controller', ['$scope', function ($scope) {}]);
+      angular.module('hfs', []).controller('controller', [
+        '$scope',
+        function ($scope) {
+          spica.get.navigations((data) => {
+            $scope.navigations = data.reduce(
+              (obj, item) => Object.assign(obj, { [item.key]: item.enabled }),
+              {}
+            );
+            $scope.$apply();
+          });
+        },
+      ]);
     </script>
   </body>
 </html>

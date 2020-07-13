@@ -37,7 +37,7 @@
             <div
               class="content d-flex flex-column align-items-start justify-content-end"
             >
-              <h2 class="title pb-1"><b>{{slide.name}}</b> Apartmanı</h2>
+              <h2 class="title pb-1"><b>{{slide.name}}</b></h2>
               <a href="proje-detay.html?project={{slide._id}}" class="link mt-3"
                 >Proje Detayı</a
               >
@@ -166,8 +166,16 @@
           });
 
           spica.get.socialNetworks((data) => {
-              $scope.socialNetworks = data;
-              $scope.$apply();
+            $scope.socialNetworks = data;
+            $scope.$apply();
+          });
+
+          spica.get.navigations((data) => {
+            $scope.navigations = data.reduce(
+              (obj, item) => Object.assign(obj, { [item.key]: item.enabled }),
+              {}
+            );
+            $scope.$apply();
           });
         },
       ]);

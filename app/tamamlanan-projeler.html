@@ -109,8 +109,16 @@
             $scope.$apply();
           });
           spica.get.socialNetworks((data) => {
-              $scope.socialNetworks = data;
-              $scope.$apply();
+            $scope.socialNetworks = data;
+            $scope.$apply();
+          });
+
+          spica.get.navigations((data) => {
+            $scope.navigations = data.reduce(
+              (obj, item) => Object.assign(obj, { [item.key]: item.enabled }),
+              {}
+            );
+            $scope.$apply();
           });
         },
       ]);
