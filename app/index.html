@@ -160,7 +160,9 @@
           });
 
           spica.get.newsFeatured((data) => {
-            let smallNews = data[data.length - 1].content.split('.', 2);
+            let smallNews = data[data.length - 1].content
+              .replace(/<[^>]*>?/gm, '')
+              .split('.', 2);
             $scope.news = smallNews[0] + '. ' + smallNews[1] + '.';
             $scope.$apply();
           });

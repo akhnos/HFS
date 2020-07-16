@@ -58,7 +58,7 @@ function Spica() {
         getData('5f045bc95eaba7c6887bf111/data/' + projectID, callback);
       },
       news: (callback) => {
-        getData('5f045c605eaba7b3e37bf113/data/', callback);
+        getData('5f045c605eaba7b3e37bf113/data?sort={"_id": -1}', callback);
       },
       newsFeatured: (callback) => {
         getData(
