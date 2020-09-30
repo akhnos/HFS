@@ -1,7 +1,7 @@
 function Spica() {
-  var apiURL = 'https://testing-3e558.hq.spicaengine.com/api/';
+  var apiURL = 'https://hfssadikoglu-534db.hq.spicaengine.com/api/';
   var bucketApi = '/bucket/';
-  var apiKey = '6y37r71kcbuptti';
+  var apiKey = '8oyvqj1kcu7m3cq';
 
   function getData(url, successCallback) {
     $.ajax({
@@ -20,70 +20,70 @@ function Spica() {
     get: {
       sliders: (callback) => {
         getData(
-          '5f045bc95eaba7c6887bf111/data?filter={"on_slider":true}',
+          '5f154b3575978024410817d8/data?filter={"on_slider":true}',
           callback
         );
       },
       companies: (callback) => {
-        getData('5f045dbf5eaba721327bf11b/data');
+        getData('5f154bb575978004470817de/data');
       },
       companyDetails: (projectID, callback) => {
-        getData('5f045dbf5eaba721327bf11b/data/' + projectID, callback);
+        getData('5f154bb575978004470817de/data/' + projectID, callback);
       },
       completedProjects: (callback) => {
         getData(
-          `5f045bc95eaba7c6887bf111/data?filter={"status":"completed"}`,
+          `5f154b3575978024410817d8/data?filter={"status":"completed"}`,
           callback
         );
       },
       oldProjects: (callback) => {
         getData(
-          `5f045bc95eaba7c6887bf111/data?filter={"status":"ongoing"}`,
+          `5f154b3575978024410817d8/data?filter={"status":"ongoing"}`,
           callback
         );
       },
       ongoingProjects: (callback) => {
         getData(
-          `5f045bc95eaba7c6887bf111/data?filter={"status":"ongoing"}`,
+          `5f154b3575978024410817d8/data?filter={"status":"ongoing"}`,
           callback
         );
       },
       projects: () => {
-        getData(`5f045bc95eaba7c6887bf111/data`);
+        getData(`5f154b3575978024410817d8/data`);
       },
       projectDetails: (projectID, callback) => {
-        getData('5f045bc95eaba7c6887bf111/data/' + projectID, callback);
+        getData('5f154b3575978024410817d8/data/' + projectID, callback);
       },
       myProjectsDetails: (projectID, callback) => {
-        getData('5f045bc95eaba7c6887bf111/data/' + projectID, callback);
+        getData('5f154b3575978024410817d8/data/' + projectID, callback);
       },
       news: (callback) => {
-        getData('5f045c605eaba7b3e37bf113/data?sort={"_id": -1}', callback);
+        getData('5f154abf759780bb430817d4/data?sort={"_id": -1}', callback);
       },
       newsFeatured: (callback) => {
         getData(
-          '5f045c605eaba7b3e37bf113/data?filter={"on_homepage":true}&limit=1',
+          '5f154abf759780bb430817d4/data?filter={"on_homepage":true}&limit=1',
           callback
         );
       },
       newsDetails: (newsID, callback) => {
-        getData('5f045c605eaba7b3e37bf113/data/' + newsID, callback);
+        getData('5f154abf759780bb430817d4/data/' + newsID, callback);
       },
       contactInformations: () => {},
       aboutUs: (callback) => {
-        getData('5f04d95f5eaba75e7f7bf142/data?limit=1', callback);
+        getData('5f15496f7597809f140817d1/data?limit=1', callback);
       },
       partners: (callback) => {
-        getData('5f045dbf5eaba721327bf11b/data/', callback);
+        getData('5f154bb575978004470817de/data/', callback);
       },
       partnerDetails: (partnerID, callback) => {
-        getData('5f045dbf5eaba721327bf11b/data/' + partnerID, callback);
+        getData('5f154bb575978004470817de/data/' + partnerID, callback);
       },
       socialNetworks: (callback) => {
-        getData('5f05d4e05eaba77d987bf1a8/data/', callback);
+        getData('5f154b5475978062b50817da/data/', callback);
       },
       navigations: (callback) => {
-        getData('5f0c264f5eaba7abbd7bf384/data/', callback);
+        getData('5f154b8e75978020a20817dc/data/', callback);
       },
     },
   };

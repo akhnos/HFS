@@ -76,7 +76,7 @@
       var formData = new FormData(e.target);
       $.ajax({
         url:
-          'https://testing-3e558.hq.spicaengine.com/api/bucket/5f045e295eaba72d6f7bf11f/data',
+          'https://hfssadikoglu-534db.hq.spicaengine.com/api/bucket/5f154cac7597800d080817e1/data',
         type: 'POST',
         data: {
           full_name: formData.get('name'),
@@ -84,7 +84,7 @@
           email: formData.get('email'),
         },
         beforeSend: function (xhr) {
-          xhr.setRequestHeader('Authorization', 'APIKEY 6y37r71kcbuptti');
+          xhr.setRequestHeader('Authorization', 'APIKEY 8oyvqj1kcu7m3cq');
         },
         success: function (data) {
           message.className = 'message text-dark mt-2';

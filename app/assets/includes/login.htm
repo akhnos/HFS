@@ -51,7 +51,7 @@
     } else {
       var formdata = new FormData(form);
       $.ajax({
-        url: `https://testing-3e558.hq.spicaengine.com/api/bucket/5f058af55eaba76fbc7bf17c/data`,
+        url: `https://hfssadikoglu-534db.hq.spicaengine.com/api/bucket/5f154d697597804dc00817eb/data`,
         type: 'GET',
         data: {
           filter: `{"username": "${formdata.get(
@@ -59,7 +59,7 @@
           )}", "password": "${formdata.get('password')}"}`,
         },
         beforeSend: function (xhr) {
-          xhr.setRequestHeader('Authorization', 'APIKEY 6y37r71kcbuptti');
+          xhr.setRequestHeader('Authorization', 'APIKEY 8oyvqj1kcu7m3cq');
         },
         success: function (data) {
           if (data.length > 0) {
